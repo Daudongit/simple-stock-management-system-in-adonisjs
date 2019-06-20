@@ -1,0 +1,17 @@
+@layout('layout.app')
+
+@section('content')
+  @set('title', 'Blog Demo')
+
+  {{--
+    Looping over all posts.
+
+    ref: http://edge.adonisjs.com/docs/iteration
+    --}}
+  @each(post in posts, include = 'posts.partials.post-card')
+  @else
+    @component('components.alert', { color: 'info' })
+      <p class="text-sm">There's no post available!</p>
+    @endcomponent
+  @endeach
+@endsection
