@@ -1,39 +1,237 @@
-<nav class="flex items-center justify-between flex-wrap text-white bg-brand p-6">
-  {{-- Logo --}}
-  <div class="flex items-center flex-no-shrink mr-6">
-    <a href="/">
-      <svg width="120px" height="33px" viewBox="0 0 120 33" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g transform="translate(0 .5)" fill="none" fill-rule="evenodd">
-          <path d="M20 2.236L5.618 31h28.764L20 2.236z" stroke="#fff" stroke-width="2"/>
-          <path fill="#fff" d="M12 2l12 24H0M49.392 21.6H45.92l4.336-11.2h2.976l4.448 11.2h-3.568l-.72-1.872h-3.328l-.672 1.872zm2.368-7.648l-1.168 3.152h2.24l-1.072-3.152zM65.792 21.6h-5.264V10.4h5.264c3.264 0 5.696 2.512 5.696 5.6 0 3.104-2.432 5.6-5.696 5.6zm-.464-8.32h-1.44v5.44h1.44c1.728 0 2.8-1.072 2.8-2.72 0-1.664-1.072-2.736-2.8-2.72zm15.04 8.496c-3.776 0-6.048-2.656-6.048-5.776 0-3.12 2.272-5.776 6.048-5.776 3.776 0 6.048 2.656 6.048 5.776 0 3.12-2.272 5.776-6.048 5.776zm0-2.88c1.712 0 2.688-1.328 2.688-2.896 0-1.568-.976-2.896-2.688-2.896-1.712 0-2.688 1.328-2.688 2.896 0 1.568.976 2.896 2.688 2.896zM96.912 21.6h2.608V10.4h-3.36v5.248L92.432 10.4h-2.624v11.2h3.36v-5.344l3.744 5.344zm9.92-11.2h-3.36v11.2h3.36V10.4zm3.264 7.872c.336 2.256 2.096 3.504 4.688 3.504 2.432 0 4.576-1.088 4.576-3.472-.048-1.584-.832-2.672-3.328-3.536l-1.248-.432c-.688-.24-.912-.528-.912-.848 0-.48.512-.704 1.056-.704.8 0 1.12.496 1.344 1.12l2.688-.768c-.64-1.872-1.984-2.912-4.096-2.912-2.448 0-4.272 1.392-4.272 3.552.032 2.384 2.752 3.104 3.296 3.28l1.264.48c.8.256.944.608.944.88 0 .544-.544.8-1.312.8-1.104 0-1.76-.544-1.984-1.568l-2.704.624z"/>
-        </g>
-      </svg>
-    </a>
-  </div>
-
-  {{-- Hamburger --}}
-  <div class="block lg:hidden">
-    <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white">
-      <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-    </button>
-  </div>
-
-  {{-- Navigation --}}
-  <div class="w-full block lg:flex lg:items-center lg:w-auto">
-    <div class="text-sm lg:flex-grow">
-      {{--
-        This tag let us know if the current user is logged in or not.
-
-        ref: http://adonisjs.com/docs/4.1/views#_loggedin
-        ref: http://adonisjs.com/docs/4.1/authentication#_loggedin
-      --}}
-      @loggedIn
-        <a class="block mt-4 lg:inline-block lg:mt-0 hover:text-grey-dark mr-4" href="/posts/create">Create a post</a>
-        <a class="block mt-4 lg:inline-block lg:mt-0 hover:text-grey-dark mr-4" href="/logout">Logout</a>
-      @else
-        <a class="block mt-4 lg:inline-block lg:mt-0 hover:text-grey-dark mr-4" href="/login">Sign In</a>
-        <a class="block mt-4 lg:inline-block lg:mt-0 hover:text-grey-dark mr-4" href="/register">Sign Up</a>
-      @endloggedIn
+<header class="header white-bg">
+    <div class="sidebar-toggle-box">
+        <div data-original-title="Toggle Navigation" data-placement="right" class="fa fa-bars tooltips"></div>
     </div>
-  </div>
-</nav>
+    <!--logo start-->
+    <a href="index.html" class="logo" >Flat<span>lab</span></a>
+    <!--logo end-->
+    <div class="nav notify-row" id="top_menu">
+      <!--  notification start -->
+      <ul class="nav top-menu">
+        <!-- settings start -->
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <i class="fa fa-tasks"></i>
+                <span class="badge bg-success">6</span>
+            </a>
+            <ul class="dropdown-menu extended tasks-bar">
+                <div class="notify-arrow notify-arrow-green"></div>
+                <li>
+                    <p class="green">You have 6 pending tasks</p>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="task-info">
+                            <div class="desc">Dashboard v1.3</div>
+                            <div class="percent">40%</div>
+                        </div>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <span class="sr-only">40% Complete (success)</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="task-info">
+                            <div class="desc">Database Update</div>
+                            <div class="percent">60%</div>
+                        </div>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% Complete (warning)</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="task-info">
+                            <div class="desc">Iphone Development</div>
+                            <div class="percent">87%</div>
+                        </div>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 87%">
+                                <span class="sr-only">87% Complete</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="task-info">
+                            <div class="desc">Mobile App</div>
+                            <div class="percent">33%</div>
+                        </div>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 33%">
+                                <span class="sr-only">33% Complete (danger)</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="task-info">
+                            <div class="desc">Dashboard v1.3</div>
+                            <div class="percent">45%</div>
+                        </div>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                                <span class="sr-only">45% Complete</span>
+                            </div>
+                        </div>
+
+                    </a>
+                </li>
+                <li class="external">
+                    <a href="#">See All Tasks</a>
+                </li>
+            </ul>
+        </li>
+        <!-- settings end -->
+        <!-- inbox dropdown start-->
+        <li id="header_inbox_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <i class="fa fa-envelope-o"></i>
+                <span class="badge bg-important">5</span>
+            </a>
+            <ul class="dropdown-menu extended inbox">
+                <div class="notify-arrow notify-arrow-red"></div>
+                <li>
+                    <p class="red">You have 5 new messages</p>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="photo"><img alt="avatar" src="./img/avatar-mini.jpg"></span>
+                              <span class="subject">
+                              <span class="from">Jonathan Smith</span>
+                              <span class="time">Just now</span>
+                              </span>
+                              <span class="message">
+                                  Hello, this is an example msg.
+                              </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="photo"><img alt="avatar" src="./img/avatar-mini2.jpg"></span>
+                              <span class="subject">
+                              <span class="from">Jhon Doe</span>
+                              <span class="time">10 mins</span>
+                              </span>
+                              <span class="message">
+                               Hi, Jhon Doe Bhai how are you ?
+                              </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="photo"><img alt="avatar" src="./img/avatar-mini3.jpg"></span>
+                              <span class="subject">
+                              <span class="from">Jason Stathum</span>
+                              <span class="time">3 hrs</span>
+                              </span>
+                              <span class="message">
+                                  This is awesome dashboard.
+                              </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="photo"><img alt="avatar" src="./img/avatar-mini4.jpg"></span>
+                              <span class="subject">
+                              <span class="from">Jondi Rose</span>
+                              <span class="time">Just now</span>
+                              </span>
+                              <span class="message">
+                                  Hello, this is metrolab
+                              </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">See all messages</a>
+                </li>
+            </ul>
+        </li>
+        <!-- inbox dropdown end -->
+        <!-- notification dropdown start-->
+        <li id="header_notification_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                <i class="fa fa-bell-o"></i>
+                <span class="badge bg-warning">7</span>
+            </a>
+            <ul class="dropdown-menu extended notification">
+                <div class="notify-arrow notify-arrow-yellow"></div>
+                <li>
+                    <p class="yellow">You have 7 new notifications</p>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                        Server #3 overloaded.
+                        <span class="small italic">34 mins</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="label label-warning"><i class="fa fa-bell"></i></span>
+                        Server #10 not respoding.
+                        <span class="small italic">1 Hours</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                        Database overloaded 24%.
+                        <span class="small italic">4 hrs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="label label-success"><i class="fa fa-plus"></i></span>
+                        New user registered.
+                        <span class="small italic">Just now</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="label label-info"><i class="fa fa-bullhorn"></i></span>
+                        Application error.
+                        <span class="small italic">10 mins</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">See all notifications</a>
+                </li>
+            </ul>
+        </li>
+        <!-- notification dropdown end -->
+    </ul>
+    </div>
+    <div class="top-nav ">
+        <ul class="nav pull-right top-menu">
+            <li>
+                <input type="text" class="form-control search" placeholder="Search">
+            </li>
+            <!-- user login dropdown start-->
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                    <img alt="" src="img/avatar1_small.jpg">
+                    <span class="username">Jhon Doue</span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                    <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                    <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                    <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
+                    <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                </ul>
+            </li>
+            <!-- user login dropdown end -->
+        </ul>
+    </div>
+</header>

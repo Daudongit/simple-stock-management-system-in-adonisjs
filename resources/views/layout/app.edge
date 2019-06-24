@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  {{-- Meta Information --}}
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name=viewport content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="Stock sales system">
+    <link rel="shortcut icon" href="img/favicon.png">
 
-  {{-- Title --}}
-  <title>{{ title }} | Adonis</title>
+    <title>{{ title }} | SSMS</title>
+    {{ style('/app.css') }}
 
-  {{-- CSS --}}
-  {{ style('/app.css') }}
-</head>
-<body class="bg-grey-lighter">
-  {{--
-    Include a partial into the view
-    ref: http://edge.adonisjs.com/docs/partials
-    --}}
-  @include('layout.partials.header')
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
 
-  @include('layout.partials.jumbotron')
-
-  <div class="container mx-auto px-4 mt-8">
-    {{--
-      Display the section content
-      ref: http://edge.adonisjs.com/docs/layouts#_basic_example
-      --}}
-    @!section('content')
-  </div>
-
-  {{-- Scripts --}}
-  {{ script('/app.js') }}
-</body>
+  <body>
+    <section id="container" class="">
+        @include('layout.partials.header')
+        @include('layout.partials.sidebar')
+        <section id="main-content">
+            <section class="wrapper site-min-height">
+                <!-- page start-->
+                @!section('content')
+                <!-- page end-->
+            </section>
+        </section>
+        @include('layout.partials.footer')
+    </section>
+    {{ script('/app.js') }}
+  </body>
 </html>

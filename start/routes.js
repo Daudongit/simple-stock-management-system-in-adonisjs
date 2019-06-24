@@ -15,7 +15,14 @@
 
 const Route = use('Route')
 
-Route.get('/', 'PostController.index')
+Route.get('test', ({ view }) => {
+  return view.render('layout.t')
+})
+
+Route.get('/', ({response})=>{
+  return response.redirect('/dashboard',true)
+})
+//Route.get('/', 'PostController.index')
 
 // Those routes should be only accessible
 // when you are not logged in
@@ -38,3 +45,12 @@ Route.group(() => {
   Route.get('posts/:id/delete', 'PostController.delete')
   Route.put('posts/:id', 'PostController.update')
 }).middleware(['auth'])
+
+Route.get('dashboard','DashboardController.index')
+Route.resource('items','ItemController')
+Route.resource('sales','SaleController')
+Route.resource('purchases','PurchaseController')
+Route.resource('journals','JournalController')
+Route.resource('invoices','InvoiceController')
+Route.resource('receipts','ReceiptController')
+Route.get('payment','PaymentController.index')

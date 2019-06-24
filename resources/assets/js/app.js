@@ -1,1 +1,10 @@
 console.log('Loaded...')
+//require('../flatlab/js/bootstrap')
+
+window.$ = window.jQuery = require("../flatlab/js/jquery")
+require("../flatlab/js/bootstrap.min")
+require("../flatlab/js/jquery.dcjqaccordion.2.7")
+require("../flatlab/js/jquery.scrollTo.min")
+require("../flatlab/js/jquery.nicescroll")
+//require("../flatlab/js/respond.min")
+require("../flatlab/js/common-scripts")
