@@ -39,6 +39,7 @@ const globalMiddleware = [
 const namedMiddleware = {
   auth: 'Adonis/Middleware/Auth',
   guest: 'App/Middleware/RedirectIfAuthenticated',
+  bind: 'App/Middleware/RouteModelBinding',
 }
 
 /*

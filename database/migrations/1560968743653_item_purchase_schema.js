@@ -7,7 +7,7 @@ class ItemPurchaseSchema extends Schema {
   up () {
     this.create('item_purchase', (table) => {
       table.increments()
-      table.timestamps()
+      //table.timestamps()
       table.integer('item_id').unsigned()
       table.integer('purchase_id').unsigned()
       table.integer('quantity')

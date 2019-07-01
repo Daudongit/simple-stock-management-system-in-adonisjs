@@ -4,61 +4,66 @@ const User = use('App/Models/User')
 const { validateAll } = use('Validator')
 
 class UserController {
-  create ({ view }) {
-    /**
-     * Render the view 'user.create'.
-     *
-     * ref: http://adonisjs.com/docs/4.1/views
-     */
-    return view.render('user.create')
+  async index ({ view,request }) {
+
+      const users = await User.query().paginate(
+        request.input('page',1),20
+      )
+      
+      return view.render('users.index',{
+          users:users.toJSON()
+      })
   }
 
-  async store ({ auth, session, request, response }) {
-    /**
-     * Getting needed parameters.
-     *
-     * ref: http://adonisjs.com/docs/4.1/request#_only
-     */
-    const data = request.only(['username', 'email', 'password', 'password_confirmation'])
+  async store ({session, request, response }) {
+   
+    const data = request.only([
+      'first_name','last_name',
+      'email','phone',
+      'address','password'
+    ])
 
-    /**
-     * Validating our data.
-     *
-     * ref: http://adonisjs.com/docs/4.1/validator
-     */
-    const validation = await validateAll(data, {
-      username: 'required|unique:users',
-      email: 'required|email|unique:users',
-      password: 'required',
-      password_confirmation: 'required_if:password|same:password',
-    })
+    await User.create(data)
 
-    /**
-     * If validation fails, early returns with validation message.
-     */
-    if (validation.fails()) {
-      session
-        .withErrors(validation.messages())
-        .flashExcept(['password'])
+    session.flash(
+        { success: 'User successfully created' }
+    )
 
-      return response.redirect('back')
-    }
+    return response.route('users.index')
+  }
 
-    // Deleting the confirmation field since we don't
-    // want to save it
-    delete data.password_confirmation
+  async update ({ user, session, request, response }) {
+       
+      const data = request.only([
+        'first_name','last_name',
+        'email','phone','address'
+      ])
 
-    /**
-     * Creating a new user into the database.
-     *
-     * ref: http://adonisjs.com/docs/4.1/lucid#_create
-     */
-    const user = await User.create(data)
+      if(request.input('password') != '')
+      {
+        data['password'] = await use('Hash').make(
+          request.input('password')
+        )
+      }
 
-    // Authenticate the user
-    await auth.login(user)
+      user.merge(data)
+      await user.save()
+      
+      session.flash(
+        { success: 'User successfully updated' }
+      )
+      return response.route('users.index')
+  }
 
-    return response.redirect('/')
+  async destroy ({ user, session, response }) {
+        
+      await user.delete()
+    
+      session.flash(
+        { success: 'User successfully daleted' }
+      )
+
+      return response.route('users.index')
   }
 }
 

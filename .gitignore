@@ -5,8 +5,3 @@ database/*.sqlite
 .cache
 /.idea
 /.vscode
-# Don't push the public folder
-public
-
-# Keep only images
-!public/img

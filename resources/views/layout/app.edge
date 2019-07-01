@@ -7,30 +7,27 @@
     <meta name="author" content="Mosaddek">
     <meta name="keyword" content="Stock sales system">
     <link rel="shortcut icon" href="img/favicon.png">
-
     <title>{{ title }} | SSMS</title>
-    {{ style('/app.css') }}
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
+    @include('layout._partials.head')
+    @!section('style')
   </head>
-
   <body>
     <section id="container" class="">
-        @include('layout.partials.header')
-        @include('layout.partials.sidebar')
+        @include('layout._partials.header')
+        @include('layout._partials.sidebar')
         <section id="main-content">
             <section class="wrapper site-min-height">
+                @include('layout._partials.alert')
                 <!-- page start-->
                 @!section('content')
                 <!-- page end-->
             </section>
         </section>
-        @include('layout.partials.footer')
+        @include('layout._partials.footer')
     </section>
-    {{ script('/app.js') }}
+    @!section('modal_component')
+    @include('layout._partials.foot')
+    @!section('script')
+    {{script('assets/js/custom.modal.js')}}
   </body>
 </html>

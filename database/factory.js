@@ -48,6 +48,7 @@ Factory.blueprint('App/Models/Sale', (faker, index, data) => {
 
 Factory.blueprint('App/Models/Purchase', (faker, index, data) => {
   const defaultValue = {
+    title:faker.unique(faker.word,20)[0],
     seller: faker.name(),
     user_id: async () => {
       return (await Factory.model('App/Models/User').create()).id

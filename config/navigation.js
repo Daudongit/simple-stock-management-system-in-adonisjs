@@ -10,7 +10,7 @@ module.exports = {
         },
         {
             title:"User",
-            url:"user",
+            url:"users",
             icon:"fa fa-users"
         },
         {

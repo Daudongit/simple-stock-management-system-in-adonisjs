@@ -2,5 +2,82 @@
 
 @section('content')
   @set('title', 'item')
-  item
+  <div class="row">
+      <div class="col-lg-12">
+          <section class="panel">
+              <header class="panel-heading">
+                  Item table
+                  <a href="#modalComponet" data-toggle="modal" data-action="Create"
+                    class="btn btn-info pull-right" 
+                    style="margin:15px;">
+                    <i class="fa fa-plus"></i>
+                    Add Item
+                  </a>
+              </header>
+              <div class="panel-body">
+                  <section id="unseen">
+                    <table class="table table-bordered table-striped table-condensed">
+                      <thead>
+                      <tr>
+                          <th>S/N</th>
+                          <th>Name</th>
+                          <th class="numeric">Price</th>
+                          <th class="numeric">Options</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        @each(item in items.data)
+                          <tr>
+                              <td>{{item.id}}</td>
+                              <td>{{item.name}}</td>
+                              <td>{{item.price}}</td>
+                              <td>
+                                  <a class="btn btn-primary btn-xs" href="#modalComponet" 
+                                    data-toggle="modal" data-action="Edit" 
+                                    data-content="{{stringify(item)}}">
+                                    <i class="fa fa-pencil"></i>
+                                  </a>
+                                  <a class="btn btn-danger btn-xs" href="#"
+                                      onclick="event.preventDefault();
+                                      sweet_alert(()=>{
+                                          document.getElementById('delete_{{item.id}}').submit();  
+                                        }
+                                      );">
+                                    <i class="fa fa-trash-o "></i>
+                                  </a>
+                                  <form action="{{ route('items.destroy',{id:item.id}) }}?_method=DELETE" method="POST"
+                                      id="delete_{{item.id}}" style="display: none;">
+                                  </form>
+                              </td>
+                          </tr>
+                        @else
+                          <tr class="text-center">
+                            <td colspan="4">No item found yet</td>
+                          </tr>
+                        @endeach
+                        {{simplePagination(items.page,items.lastPage)}}
+                      </tbody>
+                  </table>
+                  </section>
+              </div>
+          </section>
+      </div>
+  </div>
+@endsection
+@section('modal_component')
+	@component('components.modal',{
+    modalTitle:'Create Item',
+    modalFormAction:'/item'
+  })
+			<label for="name" class="control-label">Item Name:</label>
+      <input type="text" class="form-control" id="name" name="name">
+			<label for="price" class="control-label">Item Price:</label>
+      <input type="text" class="form-control" id="price" name="price">
+	@endcomponent
+@endsection
+@section('script')
+	<script>
+		const realUrl = "{{route('items.store')}}"
+	</script>
+  {{ script('assets/js/item.modal.js') }}
 @endsection

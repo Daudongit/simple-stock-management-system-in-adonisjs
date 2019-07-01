@@ -41,7 +41,7 @@ class DbSeeder {
 
   setCount(){
     //this.user = 1
-    this.item = 20
+    this.item = 100
     this.sale = 40
     this.purchase = 20
     this.journal = 20
@@ -80,8 +80,8 @@ class DbSeeder {
         return await Factory
         .get('item_sale')
         .createMany(this.itemSale,{
-          quantity:Math.floor(Math.random() * this.maxQuantity) + 1,
-          item_id:Math.floor(Math.random() * this.item) + 1,
+          quantity:()=>Math.floor(Math.random() * this.maxQuantity) + 1,
+          item_id:()=>Math.floor(Math.random() * this.item) + 1,
           sale_id:sale.id
         })
       })
@@ -94,8 +94,8 @@ class DbSeeder {
         return await Factory
         .get('item_purchase')
         .createMany(this.itemPurchase,{
-          quantity:Math.floor(Math.random() * this.maxQuantity) + 1,
-          item_id:Math.floor(Math.random() * this.item) + 1,
+          quantity:()=>Math.floor(Math.random() * this.maxQuantity) + 1,
+          item_id:()=>Math.floor(Math.random() * this.item) + 1,
           purchase_id:purchase.id
         })
       })

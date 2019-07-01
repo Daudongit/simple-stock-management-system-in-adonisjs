@@ -1,6 +1,46 @@
 @layout('layout.app')
-
+@section('style')
+    <link rel="stylesheet" href="/assets/css/widget.css">
+@endsection
 @section('content')
   @set('title', 'dashboard')
-  dashboard
+  <div class="row state-overview">
+      <div class="col-md-12">
+          <div class="col-md-12" style="margin-bottom:2%">
+              <div class="row">
+                  <div class="col-md-4">            
+                      <div class="widget navy-bg p-lg text-center">
+                          <div class="m-b-md">
+                              <i class="fa fa-gift fa-4x"></i>
+                              <h1 class="m-xs">{{itemCount.toString()}}</h1>
+                              <h3 class="font-bold no-margins">Item</h3>
+                              <small>Number of item</small>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4"> 
+                      <div class="widget lazur-bg p-lg text-center">
+                          <div class="m-b-md">
+                              <i class="fa fa-book fa-4x"></i>
+                              <h1 class="m-xs">{{journalCount}}</h1>
+                              <h3 class="font-bold no-margins">Journal</h3>
+                              <small>Number of journal</small>
+                          </div>
+                      </div> 
+                  </div>
+                  <div class="col-md-4"> 
+                      <div class="widget yellow-bg p-lg text-center">
+                          <div class="m-b-md">
+                              <i class="fa fa-tags fa-4x"></i>
+                              <h1 class="m-xs">{{saleCount}}</h1>
+                              <h3 class="font-bold no-margins">Sale</h3>
+                              <small>Number of sale</small>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 @endsection
+

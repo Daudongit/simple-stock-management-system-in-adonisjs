@@ -8,6 +8,7 @@ class PurchaseSchema extends Schema {
     this.create('purchases', (table) => {
       table.increments()
       table.timestamps()
+      table.string('title').unique()
       table.string('seller',80) //product seller
       table.integer('user_id').unsigned()//buyer staff
     })

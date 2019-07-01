@@ -1,0 +1,93 @@
+@layout('layout.app')
+
+@section('content')
+  @set('title', 'user')
+  <div class="row">
+      <div class="col-lg-12">
+          <section class="panel">
+              <header class="panel-heading">
+                  User list
+                  <a href="#modalComponet" data-toggle="modal" data-action="Create"
+                    class="btn btn-info pull-right" 
+                    style="margin:15px;">
+                    <i class="fa fa-plus"></i>
+                    Add User
+                  </a>
+              </header>
+              <div class="panel-body">
+                  <section id="unseen">
+                    <table class="table table-bordered table-striped table-condensed">
+                      <thead>
+                      <tr>
+                        <th>S/N</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        @each(user in users.data)
+                            <tr>
+                                <td>{{user.id}}</td>
+                                <td>{{user.first_name +' '+ user.last_name}}</td>
+                                <td>{{user.phone}}</td>
+                                <td>{{user.address}}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-xs" href="#modalComponet" 
+                                        data-toggle="modal" data-action="Edit" 
+                                        data-content="{{stringify(user)}}">
+                                    <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-danger btn-xs" href="#"
+                                        onclick="event.preventDefault();
+                                            sweet_alert(()=>{
+                                                document.getElementById('delete_{{user.id}}').submit();  
+                                            }
+                                        );">
+                                    <i class="fa fa-trash-o "></i>
+                                    </a>
+                                    <form action="{{ route('users.destroy',{id:user.id}) }}?_method=DELETE" method="POST"
+                                        id="delete_{{user.id}}" style="display: none;">
+                                    </form>
+                                </td>
+                            </tr>
+                        @else
+                            <tr class="text-center">
+                                <td colspan="4">No user found yet</td>
+                            </tr>
+                        @endeach
+                        {{simplePagination(users.page,users.lastPage)}}
+                      </tbody>
+                  </table>
+                  </section>
+              </div>
+          </section>
+      </div>
+  </div>
+@endsection
+@section('modal_component')
+	@component('components.modal',{
+        modalTitle:'Create User',
+        modalFormAction:'/users'
+    })
+	  <label for="first_name" class="control-label">First Name:</label>
+      <input type="text" class="form-control" id="first_name" name="first_name">
+	  <label for="last_name" class="control-label">Last Name:</label>
+      <input type="text" class="form-control" id="last_name" name="last_name">
+	  <label for="email" class="control-label">Email:</label>
+      <input type="text" class="form-control" id="email" name="email">
+	  <label for="phone" class="control-label">Phone:</label>
+      <input type="phone" class="form-control" id="phone" name="phone">
+      <label for="passsword" class="control-label">Password:</label>
+      <input type="password" class="form-control" id="password" name="password">
+      <label for="address" class="control-label">Address:</label>
+      <textarea name="address" id="address" cols="10" rows="4" class="form-control"></textarea>
+	@endcomponent
+@endsection
+@section('script')
+	<script>
+		const realUrl = "{{route('users.store')}}"
+	</script>
+  {{ script('assets/js/user.modal.js') }}
+@endsection
