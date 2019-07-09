@@ -41,7 +41,7 @@ class DbSeeder {
 
   setCount(){
     //this.user = 1
-    this.item = 100
+    this.item = 50
     this.sale = 40
     this.purchase = 20
     this.journal = 20

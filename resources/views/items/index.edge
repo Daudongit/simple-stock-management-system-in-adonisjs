@@ -28,9 +28,9 @@
                       <tbody>
                         @each(item in items.data)
                           <tr>
-                              <td>{{item.id}}</td>
+                              <td>{{($loop.index + 1)}}</td>
                               <td>{{item.name}}</td>
-                              <td>{{item.price}}</td>
+                              <td>{{currency()+' '+item.price}}</td>
                               <td>
                                   <a class="btn btn-primary btn-xs" href="#modalComponet" 
                                     data-toggle="modal" data-action="Edit" 
@@ -70,9 +70,9 @@
     modalFormAction:'/item'
   })
 			<label for="name" class="control-label">Item Name:</label>
-      <input type="text" class="form-control" id="name" name="name">
+      <input type="text" class="form-control" id="name" name="name" required>
 			<label for="price" class="control-label">Item Price:</label>
-      <input type="text" class="form-control" id="price" name="price">
+      <input type="text" class="form-control" id="price" name="price" required>
 	@endcomponent
 @endsection
 @section('script')

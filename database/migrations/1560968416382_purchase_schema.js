@@ -10,7 +10,7 @@ class PurchaseSchema extends Schema {
       table.timestamps()
       table.string('title').unique()
       table.string('seller',80) //product seller
-      table.integer('user_id').unsigned()//buyer staff
+      table.integer('user_id').unsigned()//buyer (staff)
     })
   }
 

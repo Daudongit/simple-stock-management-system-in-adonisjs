@@ -15,11 +15,12 @@ $('#modalComponet').on('show.bs.modal', function (event){
                 editModal(param)
             }
             else
-            {
+            {   
                 //$('.MultiFile-label').hide()
                 inputs.val('')
                 textareas.val('')
-                //selects.val('').trigger('change')
+                selects.val('').trigger('change')
+                $('.item-quantity').remove()
             }
     }
 })

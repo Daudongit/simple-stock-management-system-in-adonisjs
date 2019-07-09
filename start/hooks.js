@@ -6,6 +6,8 @@ hooks.after.providersBooted(() => {
 
   View.global('year', () => new Date().getFullYear())
 
+  View.global('currency', () => use('Config').get('app.currency'))
+
   View.global('stringify', (item) => JSON.stringify(item))
 
   View.global('hasFlash', function(item){

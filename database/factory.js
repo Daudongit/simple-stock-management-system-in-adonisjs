@@ -28,7 +28,7 @@ Factory.blueprint('App/Models/User', (faker, index, data) => {
 
 Factory.blueprint('App/Models/Item', (faker, index, data) => {
   const defaultValue = {
-    name: faker.word(),
+    name:faker.unique(faker.word,50)[0],
     price: faker.integer({ min: 500, max: 3000 })
   }
 
@@ -37,6 +37,7 @@ Factory.blueprint('App/Models/Item', (faker, index, data) => {
 
 Factory.blueprint('App/Models/Sale', (faker, index, data) => {
   const defaultValue = {
+    title:faker.unique(faker.word,50)[0],
     buyer: faker.name(),
     user_id: async () => {
       return (await Factory.model('App/Models/User').create()).id

@@ -10,6 +10,7 @@ class Purchase extends Model {
 
     items () {
         return this.belongsToMany('App/Models/Item')
+        .withPivot(['quantity'])
     }
 }
 

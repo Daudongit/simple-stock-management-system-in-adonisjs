@@ -2,9 +2,10 @@
 
 class NavigationGenerator {
 
-    async handle ({ view,request }, next) {
+    async handle ({ view,request, auth}, next) {
         const Config = use('Config')
-
+        await auth.logout()
+        await auth.loginViaId(1)
         view.share({
             navigationItems:()=> this.addActive(
                 Config.get("navigation.items"),request

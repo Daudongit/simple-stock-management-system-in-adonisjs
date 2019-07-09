@@ -8,7 +8,7 @@ class CreateItemSchema extends Schema {
     this.create('items', (table) => {
       table.increments()
       table.timestamps()
-      table.string('name',80).notNullable()
+      table.string('name',80).unique().notNullable()
       table.string('price',25)
     })
   }

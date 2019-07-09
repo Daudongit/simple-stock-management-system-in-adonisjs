@@ -3,6 +3,7 @@
 const Env = use('Env')
 
 module.exports = {
+  currency:Env.get('CURRENCY'),
   /*
   |--------------------------------------------------------------------------
   | App Key
