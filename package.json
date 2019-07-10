@@ -5,10 +5,10 @@
   "description": "AdonisJs Blog Demo Application",
   "scripts": {
     "start": "ENV_SILENT=true node server.js",
-    "test": "node ace test --timeout=0",
-    "build": "node ace bundle",
-    "build:dev": "node ace bundle --watch",
-    "build:prod": "node ace bundle --production"
+    "test": "ENV_SILENT=true node ace test --timeout=0",
+    "build": "ENV_SILENT=true node ace bundle",
+    "build:dev": "ENV_SILENT=true node ace bundle --watch",
+    "build:prod": "ENV_SILENT=true node ace bundle --production"
   },
   "engines": {
       "node": "8.5.0"
