@@ -4,7 +4,7 @@
   "adonis-version": "4.0.0",
   "description": "AdonisJs Blog Demo Application",
   "scripts": {
-    "start": "node server.js",
+    "start": "ENV_SILENT=true node server.js",
     "test": "node ace test --timeout=0",
     "build": "node ace bundle",
     "build:dev": "node ace bundle --watch",
