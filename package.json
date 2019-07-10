@@ -10,6 +10,9 @@
     "build:dev": "adonis bundle --watch",
     "build:prod": "adonis bundle --production"
   },
+  "engines": {
+      "node": "8.5.0"
+  },
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
