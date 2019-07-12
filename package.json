@@ -10,9 +10,7 @@
     "build:dev": "ENV_SILENT=true node ace bundle --watch",
     "build:prod": "ENV_SILENT=true node ace bundle --production"
   },
-  "engines": {
-      "node": "8.5.0"
-  },
+  
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
