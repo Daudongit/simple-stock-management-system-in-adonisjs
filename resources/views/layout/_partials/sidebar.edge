@@ -1,0 +1,16 @@
+<aside>
+    <div id="sidebar"  class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+            @each(item in navigationItems())
+                <li>
+                    <a href="/{{item.url}}" class="{{item.active}}">
+                        <i class="{{item.icon}}"></i>
+                        <span>{{item.title}}</span>
+                    </a>
+                </li>
+            @endeach
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>

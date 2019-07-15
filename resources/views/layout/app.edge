@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="Stock sales system">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title>{{ title }} | SSMS</title>
+    @include('layout._partials.head')
+    @!section('style')
+    {{style('assets/css/custom.css')}}
+  </head>
+  <body>
+    <section id="container" class="">
+        @include('layout._partials.header')
+        @include('layout._partials.sidebar')
+        <section id="main-content">
+            <section class="wrapper site-min-height">
+                @include('layout._partials.alert')
+                <!-- page start-->
+                @!section('content')
+                <!-- page end-->
+            </section>
+        </section>
+        @include('layout._partials.footer')
+    </section>
+    @!section('modal_component')
+    @include('layout._partials.foot')
+    @!section('script')
+    {{script('assets/js/custom.modal.js')}}
+  </body>
+</html>

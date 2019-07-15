@@ -1,0 +1,21 @@
+.level{display:flex; justify-content:space-between}
+.level a{margin-right: .4em;}
+
+.select2-container{
+    width: 100%!important
+}
+
+#item-quantity-container{
+    width: 100%;
+    padding-top:5px; 
+    border: 2px groove (internal value)
+}
+
+.item-quantity-header{
+    background-color: #e4e4e4;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    color: #797979;
+    padding-top:10px;
+    padding-bottom: 10px
+}

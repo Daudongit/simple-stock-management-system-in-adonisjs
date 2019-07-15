@@ -1,0 +1,22 @@
+@if(hasFlash('success') || hasFlash('warning'))
+    <div class="alert alert-{{hasFlash('warning')?'warning':'success'}} alert-dismissible text-center" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        {{hasFlash('warning')?flashMessage('warning'):flashMessage('success')}}
+    </div>
+@endif
+
+
+@if(hasFlash('errors'))
+    <div class="alert alert-danger text-center" alert-dismissible role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          <ul>
+              @each(error in old('errors'))
+                <li>{{ error.message }}</li>
+              @endeach
+          </ul>
+    </div>
+@endif
