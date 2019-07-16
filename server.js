@@ -16,12 +16,13 @@
 |     Also you can preload files by calling `preLoad('path/to/file')` method.
 |     Make sure to pass relative path from the project root.
 */
-const https = require('https')
+//const https = require('https')
 const { Ignitor } = require('@adonisjs/ignitor')
 
 new Ignitor(require('@adonisjs/fold'))
   .appRoot(__dirname)
-  .fireHttpServer(https.createServer)
+  .fireHttpServer()
+  //.fireHttpServer(https.createServer)
   .catch(console.error)
 
 
