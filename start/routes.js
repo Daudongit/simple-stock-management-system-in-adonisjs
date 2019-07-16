@@ -16,7 +16,8 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+//Route.on('/').render('welcome')
+Route.get('/','DashboardController.index')
 Route.get('dashboard','DashboardController.index')
 Route.resource('users','UserController')
   .validator(new Map([ [['users.store','users.update'], ['User']] ]))
